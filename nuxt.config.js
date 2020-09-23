@@ -4,24 +4,20 @@ export default {
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    title: 'stayfun-be',
+    title: 'STAYFUN',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      { hid: 'description', name: 'description', content: 'STAYFUN BACKEND' }
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: [
-  ],
+  css: ['~/assets/scss/main.scss'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [
-  ],
+  plugins: ['~/plugins/vee-validate.js'],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -43,5 +39,20 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
+    babel: {
+      presets() {
+        return [['@nuxt/babel-preset-app', { loose: true }]]
+      }
+    },
+    uglify: {
+      uglifyOptions: {
+        compress: {
+          drop_console: true
+        }
+      }
+    },
+    extractCSS: true,
+    transpile: ['vee-validate/dist/rules'],
+    analyze: process.env.NODE_ENV !== 'production'
   }
 }
