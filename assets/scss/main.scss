@@ -1,0 +1,12 @@
+@import './utils/fonts';
+
+html,
+body {
+  font-family: customFont !important;
+}
+
+body {
+  background-color: #fff;
+  overflow-x: hidden !important;
+  min-width: 100vw;
+}

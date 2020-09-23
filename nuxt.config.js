@@ -17,7 +17,7 @@ export default {
   css: ['~/assets/scss/main.scss'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ['~/plugins/vee-validate.js'],
+  plugins: ['~/plugins/vee-validate.js', '~/plugins/axios'],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -25,13 +25,20 @@ export default {
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
     // https://go.nuxtjs.dev/typescript
-    '@nuxt/typescript-build'
+    '@nuxt/typescript-build',
+    [
+      '@nuxtjs/vuetify',
+      {
+        /* module options */
+      }
+    ]
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    'cookie-universal-nuxt'
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -54,5 +61,8 @@ export default {
     extractCSS: true,
     transpile: ['vee-validate/dist/rules'],
     analyze: process.env.NODE_ENV !== 'production'
+  },
+  env: {
+    PROXY_URL: process.env.NUXT_ENV_PROXY_URL
   }
 }

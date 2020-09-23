@@ -27,6 +27,7 @@ module.exports = {
     'vue/multiline-html-element-content-newline': 'off',
     'vue/html-closing-bracket-newline': 'off',
     'unicorn/prefer-includes': 'off',
-    'nuxt/no-cjs-in-config': 'off'
+    'nuxt/no-cjs-in-config': 'off',
+    'vue/max-attributes-per-line': 'off'
   }
 }
