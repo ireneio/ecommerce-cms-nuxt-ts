@@ -26,6 +26,7 @@
                   prepend-icon="mdi-lock"
                   type="password"
                   v-model="form.password"
+                  @keydown.enter="handleSignIn"
                 ></v-text-field>
               </v-form>
             </v-card-text>

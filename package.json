@@ -35,6 +35,7 @@
     "nuxt": "^2.14.5",
     "nuxt-property-decorator": "^2.8.3",
     "sass-loader": "^9.0.3",
+    "tiptap-vuetify": "^2.24.0",
     "vee-validate": "^3.4.0",
     "vue": "^2.6.12",
     "vuex-module-decorators": "^1.0.1"
