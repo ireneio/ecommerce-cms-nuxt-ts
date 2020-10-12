@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NUXT_ENV_PROXY_URL=http://192.168.27.36:8081 nuxt-ts",
-    "build": "cross-env NODE_ENV=production nuxt-ts build",
-    "start": "cross-env NODE_ENV=production nuxt-ts start",
-    "generate": "nuxt-ts generate",
+    "build:dev": "cross-env NODE_ENV=development NUXT_HOST=0.0.0.0 NUXT_PORT=3000 nuxt-ts build",
+    "build": "cross-env NODE_ENV=production NUXT_HOST=0.0.0.0 NUXT_PORT=3000 NUXT_ENV_PROXY_URL=http://192.168.27.36:8081 nuxt-ts build",
+    "start": "cross-env NODE_ENV=production NUXT_HOST=0.0.0.0 NUXT_PORT=3000 NUXT_ENV_PROXY_URL=http://192.168.27.36:8081 nuxt-ts start",
+    "generate": "cross-env NODE_ENV=production NUXT_HOST=0.0.0.0 NUXT_PORT=3000 NUXT_ENV_PROXY_URL=http://192.168.27.36:8081 nuxt-ts generate",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint": "npm run lint:js",
     "test": "jest"
@@ -20,6 +21,7 @@
     }
   },
   "dependencies": {
+    "@baoshishu/vue-editor": "^0.3.0",
     "@nuxt/types": "^2.14.5",
     "@nuxt/typescript-build": "^2.0.3",
     "@nuxt/typescript-runtime": "^2.0.0",
@@ -34,8 +36,11 @@
     "node-sass": "^4.14.1",
     "nuxt": "^2.14.5",
     "nuxt-property-decorator": "^2.8.3",
+    "prosemirror-utils": "^0.9.6",
     "sass-loader": "^9.0.3",
-    "tiptap-vuetify": "^2.24.0",
+    "tiptap": "^1.30.0",
+    "tiptap-extensions": "^1.33.1",
+    "v-tooltip": "^2.0.3",
     "vee-validate": "^3.4.0",
     "vue": "^2.6.12",
     "vuex-module-decorators": "^1.0.1"

@@ -1,1 +1,1 @@
-declare module 'tiptap-vuetify'
+declare module '@baoshishu/vue-editor'

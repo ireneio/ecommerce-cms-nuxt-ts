@@ -18,10 +18,11 @@
                   </v-text-field>
                 </v-col>
                 <v-col cols="12" class="mt-n5">
-                  <!-- <tiptap-vuetify
-                    v-model="content"
-                    :extensions="extensions"
-                  ></tiptap-vuetify> -->
+                  <editor
+                    v-model="data"
+                    :image-provider="imageProvider"
+                    style="width:100%;"
+                  />
                 </v-col>
                 <v-col cols="12" class="mt-n5">
                   <v-radio-group v-model="radios" row>
@@ -206,69 +207,16 @@
 
 <script lang="ts">
 import { Component, Vue, Watch } from 'nuxt-property-decorator'
-import {
-  // TiptapVuetify,
-  Heading,
-  Bold,
-  Italic,
-  Strike,
-  Underline,
-  Code,
-  Paragraph,
-  BulletList,
-  OrderedList,
-  ListItem,
-  Link,
-  Blockquote,
-  HardBreak,
-  HorizontalRule,
-  History
-} from 'tiptap-vuetify'
+import Editor from '@baoshishu/vue-editor'
 
 @Component({
   layout: 'default',
   middleware: 'auth',
   components: {
-    // TiptapVuetify
+    Editor
   }
 })
 export default class AnnouncementCreate extends Vue {
-  private extensions: Array<any> = [
-    History,
-    Blockquote,
-    Link,
-    Underline,
-    Strike,
-    Italic,
-    ListItem,
-    BulletList,
-    OrderedList,
-    [
-      Heading,
-      {
-        options: {
-          levels: [1, 2, 3]
-        }
-      }
-    ],
-    Bold,
-    Code,
-    HorizontalRule,
-    Paragraph,
-    HardBreak
-  ]
-  // private async sendGetGroupListRequest() {
-  //   try {
-  //     await sysStore.getPermissionList({
-  //       token: this.$cookies.get('accessToken')
-  //     })
-  //   } catch (e) {
-  //     // error
-  //   }
-  // }
-
-  private async created() {
-    // await this.sendGetPermissionListRequest()
-  }
+  private async created() {}
 }
 </script>
