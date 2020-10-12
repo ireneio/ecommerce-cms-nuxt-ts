@@ -68,5 +68,9 @@ export default {
   },
   env: {
     PROXY_URL: process.env.NUXT_ENV_PROXY_URL
+  },
+  loading: {
+    color: '#fff',
+    height: '2px'
   }
 }

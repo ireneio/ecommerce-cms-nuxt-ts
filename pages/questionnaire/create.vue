@@ -2,8 +2,8 @@
   <v-container fluid>
     <v-row>
       <v-col cols="12">
+        <h2 class="mb-4">新增問卷</h2>
         <v-card outlined>
-          <v-card-title>新增問卷</v-card-title>
           <v-card-text>
             <v-tabs v-model="currentTab">
               <v-tab v-for="item in tabs" :key="item.name">
@@ -22,23 +22,25 @@
                   >
                   </v-text-field>
                 </v-col>
-                <v-col cols="12">
+                <v-col cols="12" class="mt-n5">
                   <v-file-input
                     small-chips
                     multiple
-                    label="問卷Banner"
-                    placeholder="圖檔格式限制為 JPG、PNG、GIF，大小限制2MB"
+                    label="問卷 Banner"
+                    placeholder="點擊上傳"
                     prepend-icon=""
+                    hint="格式限制為大小限制 2MB 的 JPG、PNG、GIF"
+                    persistent-hint
                   ></v-file-input>
                 </v-col>
-                <v-col cols="12">
+                <v-col cols="12" class="mt-n5">
                   <v-textarea
                     name="input-7-1"
                     label="問卷說明"
                     hint="限 200 字"
                   ></v-textarea>
                 </v-col>
-                <v-col cols="12">
+                <v-col cols="12" class="mt-n5">
                   <v-radio-group v-model="radios" row>
                     <template v-slot:label>
                       <div>前台顯示問卷</div>
@@ -50,7 +52,7 @@
                         </div>
                       </template>
                     </v-radio>
-                    <v-radio value="aaa">
+                    <v-radio value="aaa" class="ml-lg-4">
                       <template v-slot:label>
                         <div>
                           否
@@ -59,7 +61,7 @@
                     </v-radio>
                   </v-radio-group>
                 </v-col>
-                <v-col cols="12">
+                <v-col cols="12" class="mt-n5">
                   <v-radio-group v-model="radios" row>
                     <template v-slot:label>
                       <div>前台顯示問卷</div>
@@ -71,7 +73,7 @@
                         </div>
                       </template>
                     </v-radio>
-                    <v-radio value="aaa">
+                    <v-radio value="aaa" class="ml-lg-4">
                       <template v-slot:label>
                         <div>
                           否
@@ -80,7 +82,7 @@
                     </v-radio>
                   </v-radio-group>
                 </v-col>
-                <v-col cols="12">
+                <v-col cols="12" class="mt-n5">
                   <v-radio-group v-model="radios" row>
                     <template v-slot:label>
                       <div>問卷提交後是否可再編輯</div>
@@ -92,7 +94,7 @@
                         </div>
                       </template>
                     </v-radio>
-                    <v-radio value="aaa">
+                    <v-radio value="aaa" class="ml-lg-4">
                       <template v-slot:label>
                         <div>
                           否
@@ -101,7 +103,7 @@
                     </v-radio>
                   </v-radio-group>
                 </v-col>
-                <v-col cols="12">
+                <v-col cols="12" class="mt-n5">
                   <v-radio-group v-model="radios" row>
                     <template v-slot:label>
                       <div>問卷填答⽅式</div>
@@ -113,7 +115,7 @@
                         </div>
                       </template>
                     </v-radio>
-                    <v-radio value="aaa">
+                    <v-radio value="aaa" class="ml-lg-4">
                       <template v-slot:label>
                         <div>
                           匿名
@@ -122,7 +124,7 @@
                     </v-radio>
                   </v-radio-group>
                 </v-col>
-                <v-col cols="12">
+                <v-col cols="12" class="mt-n5">
                   <v-radio-group v-model="radios" row>
                     <template v-slot:label>
                       <div>問卷填答次數</div>
@@ -134,7 +136,7 @@
                         </div>
                       </template>
                     </v-radio>
-                    <v-radio value="aaa">
+                    <v-radio value="aaa" class="ml-lg-4">
                       <template v-slot:label>
                         <div>
                           不限
@@ -143,7 +145,7 @@
                     </v-radio>
                   </v-radio-group>
                 </v-col>
-                <v-col cols="4">
+                <v-col cols="4" class="mt-n5">
                   <v-radio-group v-model="radios" row>
                     <template v-slot:label>
                       <div>問卷調查期間</div>
@@ -155,7 +157,7 @@
                         </div>
                       </template>
                     </v-radio>
-                    <v-radio value="aaa">
+                    <v-radio value="aaa" class="ml-lg-4">
                       <template v-slot:label>
                         <div>
                           設定調查起訖日
@@ -164,7 +166,7 @@
                     </v-radio>
                   </v-radio-group>
                 </v-col>
-                <v-col cols="4">
+                <v-col cols="4" class="mt-n5">
                   <v-menu
                     ref="menu"
                     v-model="menu"
@@ -194,7 +196,7 @@
                     </v-date-picker>
                   </v-menu>
                 </v-col>
-                <v-col cols="4">
+                <v-col cols="4" class="mt-n5">
                   <v-menu
                     ref="menu"
                     v-model="menu"
@@ -224,7 +226,7 @@
                     </v-date-picker>
                   </v-menu>
                 </v-col>
-                <v-col cols="4">
+                <v-col cols="4" class="mt-n5">
                   <v-radio-group v-model="radios" row>
                     <template v-slot:label>
                       <div>問卷調查對象</div>
@@ -236,7 +238,7 @@
                         </div>
                       </template>
                     </v-radio>
-                    <v-radio value="aaa">
+                    <v-radio value="aaa" class="ml-lg-4">
                       <template v-slot:label>
                         <div>
                           指定企業
@@ -245,7 +247,21 @@
                     </v-radio>
                   </v-radio-group>
                 </v-col>
-                <v-col cols="12" class="mt-4">
+                <v-col cols="12" class="mt-n5">
+                  <v-combobox
+                    v-model="select"
+                    :items="items"
+                    label="指定企業"
+                    multiple
+                    chips
+                    clearable
+                    hide-selected
+                    open-on-clear
+                    :allow-overflow="false"
+                    deletable-chips
+                  ></v-combobox>
+                </v-col>
+                <v-col cols="12" class="mt-n3">
                   <v-btn color="primary" @click="currentTab = 1">
                     <v-icon>mdi-checkbox-marked-outline</v-icon>
                     <span> 下一步</span>

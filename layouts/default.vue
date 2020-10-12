@@ -39,7 +39,7 @@
                 color="primary"
               >
                 <v-list-item-action v-if="child.icon">
-                  <v-icon small>{{ child.icon }}</v-icon>
+                  <v-icon x-small class="ml-2">{{ child.icon }}</v-icon>
                 </v-list-item-action>
                 <v-list-item-content>
                   <v-list-item-title>
@@ -71,7 +71,9 @@
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title style="width: 300px" class="ml-0 pl-4">
-        <span class="hidden-sm-and-down">STAYFUN</span>
+        <span class="hidden-sm-and-down" @click="$router.push('/')">
+          STAYFUN
+        </span>
       </v-toolbar-title>
       <!-- <v-text-field
         flat
@@ -93,14 +95,7 @@
         :offset-y="menuSetting.offsetY"
       >
         <template v-slot:activator="{ on, attrs }">
-          <v-btn
-            color="primary"
-            depressed
-            class="mr-5"
-            v-bind="attrs"
-            v-on="on"
-            large
-          >
+          <v-btn color="teal" class="mr-5" v-bind="attrs" v-on="on" large>
             <v-icon>mdi-account-circle</v-icon>
             <span class="ml-2">{{ username }}</span>
           </v-btn>
@@ -123,28 +118,21 @@
                 </v-container>
               </v-card-title>
               <v-card-actions>
-                <v-btn class="warning">
+                <v-btn class="primary">
                   <v-icon>mdi-cog</v-icon>
                   <span> 修改密碼</span>
                 </v-btn>
-                <v-btn class="defualt">登出</v-btn>
+                <v-btn class="warning">登出</v-btn>
               </v-card-actions>
             </v-card>
           </v-list-item>
         </v-list>
       </v-menu>
-      <v-avatar size="32px" item>
-        <v-img
-          src="https://cdn.vuetifyjs.com/images/logos/logo.svg"
-          alt="Vuetify"
-        >
-        </v-img>
-      </v-avatar>
     </v-app-bar>
     <v-main>
-      <v-container fluid>
+      <v-container fluid class="pt-0">
         <v-row align="center" justify="center">
-          <v-col cols="12">
+          <v-col cols="12" class="mt-n4">
             <nuxt />
           </v-col>
         </v-row>
@@ -160,17 +148,23 @@
         </v-card-title>
         <v-card-text class="mt-4">
           STAYFUN Version 1.87.0 <br />
-          <strong>更新時間： </strong>
+          <strong class="primary--text">更新時間： </strong>
           2020/9/25 上午7:33:10 <br />
           <div class="mt-7">
             Copyright © 2017
-            <span class="primary--text">MAYO Human Capital Inc. </span>
+            <a
+              class="primary--text text-decoration-none"
+              href="https://www.mayohr.com/stayfun/"
+              target="_blank"
+            >
+              MAYO Human Capital Inc.
+            </a>
             鼎恒數位科技股份有限公司 All rights reserved.
           </div>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn text color="primary" @click="dialog = false">
+          <v-btn text color="primary" @click="dialog = false" large>
             <strong>關閉</strong>
           </v-btn>
         </v-card-actions>
@@ -292,12 +286,12 @@ export default class DefaultLayout extends Vue {
           text: '訊息牆列表',
           icon: 'mdi-checkbox-blank-circle-outline',
           route: 'announcement'
-        },
-        {
-          text: '發送新訊息',
-          icon: 'mdi-checkbox-blank-circle-outline',
-          route: 'announcement-create'
         }
+        // {
+        //   text: '發送新訊息',
+        //   icon: 'mdi-checkbox-blank-circle-outline',
+        //   route: 'announcement-create'
+        // }
       ]
     },
     {
@@ -379,7 +373,7 @@ export default class DefaultLayout extends Vue {
     {
       icon: 'mdi-cash-multiple',
       'icon-alt': 'mdi-cash',
-      text: '財務專區',
+      text: '享樂金財務專區',
       model: false,
       children: [
         {
@@ -514,7 +508,7 @@ export default class DefaultLayout extends Vue {
     {
       icon: 'mdi-file-cog',
       'icon-alt': 'mdi-file-cog-outline',
-      text: '訂單管理',
+      text: '享樂金訂單管理',
       model: false,
       children: [
         {
@@ -616,11 +610,11 @@ export default class DefaultLayout extends Vue {
           icon: 'mdi-checkbox-blank-circle-outline',
           route: 'funActivity'
         },
-        {
-          text: '建立活動',
-          icon: 'mdi-checkbox-blank-circle-outline',
-          route: 'funActivity-funActivityEvents'
-        },
+        // {
+        //   text: '建立活動',
+        //   icon: 'mdi-checkbox-blank-circle-outline',
+        //   route: 'funActivity-funActivityEvents'
+        // },
         {
           text: '活動退貨單',
           icon: 'mdi-checkbox-blank-circle-outline',
@@ -648,12 +642,12 @@ export default class DefaultLayout extends Vue {
           text: '兌換查詢',
           icon: 'mdi-checkbox-blank-circle-outline',
           route: 'gift-exchangeDetail'
-        },
-        {
-          text: '建立好禮訊息',
-          icon: 'mdi-checkbox-blank-circle-outline',
-          route: 'gift-message'
         }
+        // {
+        //   text: '建立好禮訊息',
+        //   icon: 'mdi-checkbox-blank-circle-outline',
+        //   route: 'gift-message'
+        // }
       ]
     },
     {
@@ -704,12 +698,12 @@ export default class DefaultLayout extends Vue {
           text: '版本列表',
           icon: 'mdi-checkbox-blank-circle-outline',
           route: 'version'
-        },
-        {
-          text: '新增版本',
-          icon: 'mdi-checkbox-blank-circle-outline',
-          route: 'version-edit'
         }
+        // {
+        //   text: '新增版本',
+        //   icon: 'mdi-checkbox-blank-circle-outline',
+        //   route: 'version-edit'
+        // }
       ]
     },
     {

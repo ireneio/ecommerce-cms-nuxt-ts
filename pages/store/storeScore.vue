@@ -2,8 +2,8 @@
   <v-container fluid>
     <v-row>
       <v-col cols="12">
+        <h2 class="mb-4">線下核銷紀錄</h2>
         <v-card outlined>
-          <v-card-title>線下核銷紀錄</v-card-title>
           <v-card-text>
             <v-data-table
               v-model="selected"
@@ -31,6 +31,15 @@ import { sysStore } from '~/store'
   middleware: 'auth'
 })
 export default class StoreStoreScore extends Vue {
+  private headers: Array<any> = [
+    { text: '區域', value: 'calories', align: 'start', sortable: false },
+    { text: '類別', value: 'fat', align: 'start', sortable: false },
+    { text: '店名', value: 'fat', align: 'start', sortable: false },
+    { text: '會員代碼', value: 'fat', align: 'start', sortable: false },
+    { text: '評分', value: 'fat', align: 'start', sortable: false },
+    { text: '消費日期', value: 'fat', align: 'start', sortable: false }
+  ]
+
   // private async sendGetGroupListRequest() {
   //   try {
   //     await sysStore.getPermissionList({

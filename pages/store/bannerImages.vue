@@ -2,8 +2,8 @@
   <v-container fluid>
     <v-row>
       <v-col cols="12">
+        <h2 class="mb-4">首頁圖維護(暫用)</h2>
         <v-card outlined>
-          <v-card-title>首頁圖維護(暫用)</v-card-title>
           <v-banner color="#fff">
             <v-container>
               <v-row>
@@ -14,13 +14,19 @@
                   <v-file-input
                     small-chips
                     multiple
-                    label="問卷Banner"
+                    label="問卷 Banner"
+                    placeholder="點擊上傳"
                     prepend-icon=""
+                    hint="格式限制為大小限制 2MB 的 JPG、PNG、GIF"
+                    persistent-hint
                   ></v-file-input>
                 </v-col>
                 <v-col cols="3" class="mt-4">
                   <v-btn color="primary">
                     <v-icon>mdi-checkbox-marked-outline</v-icon> 儲存
+                  </v-btn>
+                  <v-btn color="default" class="ml-lg-4">
+                    清除
                   </v-btn>
                 </v-col>
               </v-row>

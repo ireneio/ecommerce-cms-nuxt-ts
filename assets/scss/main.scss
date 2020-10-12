@@ -1,5 +1,7 @@
 @import './utils/fonts';
 
+$STAYFUN_BLUE: #3c8dbc;
+
 html,
 body {
   font-family: customFont !important;
@@ -9,4 +11,17 @@ body {
   background-color: #fff;
   overflow-x: hidden !important;
   min-width: 100vw;
+}
+
+.v-file-input .v-file-input__text.v-file-input__text--chips {
+  color: $STAYFUN_BLUE !important;
+}
+
+.v-text-field .v-label--active {
+  transform: translateY(-18px) scale(0.8);
+}
+
+.v-application--is-ltr .v-banner__wrapper {
+  padding-top: 0;
+  padding-bottom: 0;
 }

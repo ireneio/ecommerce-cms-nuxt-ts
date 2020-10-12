@@ -2,8 +2,8 @@
   <v-container fluid>
     <v-row>
       <v-col cols="12">
+        <h2 class="mb-4">特約商家匯入</h2>
         <v-card outlined>
-          <v-card-title>特約商家匯入</v-card-title>
           <v-card-subtitle>
             作業前，請先備妥特約商家清單(檔案型態:Excel)。<br />
             1、檔案欄位第一列為標題，匯入的資料從第二列開始，詳細欄位請參考Excel範例檔。<br />
@@ -19,43 +19,57 @@
             2.住宿, 3.舒壓, 4.生活, 5.時尚 <br />＊ 商家地區代碼：1.台北,
             2.新北, 3.桃園, 4.新竹, 5.苗栗, 6.台中, 7.彰化, 8.南投, 9.雲林,
             10.嘉義, 11.台南, 12.高雄, 13.屏東, 14.基隆, 15.宜蘭, 16.花蓮,
-            17.台東, 18.澎湖, 19.金門, 20.馬祖
+            17.台東, 18.澎湖, 19.金門, 20.馬祖 <br />
+            <v-btn color="primary" class="mt-4">
+              Excel 範例檔下載
+            </v-btn>
           </v-card-subtitle>
-          <v-banner color="#fff">
-            <v-container>
-              <v-row>
-                <v-col cols="12">
-                  <v-file-input
-                    small-chips
-                    multiple
-                    label="選擇EXCEL"
-                    prepend-icon=""
-                  ></v-file-input>
-                </v-col>
-                <v-col cols="12" class="mt-n7">
-                  <v-textarea
-                    name="input-7-1"
-                    label="商家匯入清單"
-                    readonly
-                    hint="共計 0 筆"
-                    persistent-hint
-                  ></v-textarea>
-                </v-col>
-                <v-col cols="12" class="mt-n7">
-                  <v-textarea
-                    name="input-7-1"
-                    label="商家異常清單"
-                    readonly
-                    hint="共計 0 筆"
-                    persistent-hint
-                  ></v-textarea>
-                </v-col>
-              </v-row>
-            </v-container>
-            <!-- <template v-slot:actions>
-              <v-btn color="primary"> <v-icon>mdi-magnify</v-icon> 搜尋 </v-btn>
-            </template> -->
-          </v-banner>
+          <v-card-text>
+            <v-banner color="rgba(60, 141, 188, 0.05)">
+              <v-container>
+                <v-row>
+                  <v-col cols="12">
+                    <v-file-input
+                      small-chips
+                      multiple
+                      label="選擇 EXCEL"
+                      placeholder="點擊上傳"
+                      prepend-icon=""
+                      hint="格式限制為大小限制 2MB 的 XSLX"
+                      persistent-hint
+                    ></v-file-input>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-banner>
+            <v-banner class="mt-4">
+              <v-container>
+                <v-row>
+                  <v-col cols="12" class="mt-n7">
+                    <v-textarea
+                      name="input-7-1"
+                      label="商家匯入清單"
+                      readonly
+                      hint="共計 0 筆"
+                      persistent-hint
+                      :value="
+                        'Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功\nAndy RD-0002 匯入成功,Andy RD-0002 匯入成功, Andy RD-0002 匯入成功,Andy RD-0002 匯入成功, Andy RD-0002 匯入成功,Andy RD-0002 匯入成功, Andy RD-0002 匯入成功,Andy RD-0002 匯入成功, Andy RD-0002 匯入成功,Andy RD-0002 匯入成功, Andy RD-0002 匯入成功,Andy RD-0002 匯入成功, Andy RD-0002 匯入成功,Andy RD-0002 匯入成功, Andy RD-0002 匯入成功,'
+                      "
+                    ></v-textarea>
+                  </v-col>
+                  <v-col cols="12" class="mt-n7">
+                    <v-textarea
+                      name="input-7-1"
+                      label="商家異常清單"
+                      readonly
+                      hint="共計 0 筆"
+                      persistent-hint
+                    ></v-textarea>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-banner>
+          </v-card-text>
         </v-card>
       </v-col>
     </v-row>
