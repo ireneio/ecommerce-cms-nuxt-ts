@@ -126,3 +126,11 @@ extend('isTaiwanMobileCarrier', {
   },
   message: '非正確手機載具格式（斜線 【 / 】 加上 7 碼數字或大寫字母）'
 })
+
+extend('password', {
+  params: ['target'],
+  validate(value, { target }) {
+    return value === target
+  },
+  message: '請輸入相同密碼'
+})

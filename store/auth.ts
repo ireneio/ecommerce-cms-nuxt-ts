@@ -37,6 +37,7 @@ export default class AuthModule extends VuexModule {
   public showPrivacy: boolean = false
   public accountToken: string = ''
   public tempUserInfo: any = {}
+  public errorMessage: string = ''
 
   get privacyHtml() {
     return this.privacyContent.content
@@ -95,6 +96,11 @@ export default class AuthModule extends VuexModule {
   @Mutation
   setPrivacyContent(payload: any) {
     this.privacyContent = payload
+  }
+
+  @Mutation
+  setErrorMessage(payload: string) {
+    this.errorMessage = payload
   }
 
   @Action({ commit: 'removeUser' })
@@ -156,9 +162,6 @@ export default class AuthModule extends VuexModule {
       },
       method: 'post'
     }
-    // if (payload.privacyVersionName) {
-    //   requestBody.data.privacyVersionName = payload.privacyVersionName
-    // }
     try {
       const result: ResponseObject = await $axios.post('/auth', requestBody)
       console.log(result)
@@ -171,6 +174,9 @@ export default class AuthModule extends VuexModule {
         case 40102:
           // Password Error
           return 40102
+        case 40101:
+          this.context.commit('setErrorMessage', result.data.sysmsg)
+          return 40101
         case 4032:
           // Privacy Agreement Required
           return { status: 4032, data: result.data.data }

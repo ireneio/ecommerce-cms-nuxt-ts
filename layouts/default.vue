@@ -109,7 +109,7 @@
                     <v-col cols="4" class="px-0">
                       <v-img :src="dP" height="60" width="60"></v-img>
                     </v-col>
-                    <v-col cols="8" class="px-0">
+                    <v-col cols="8" class="px-0 pl-4">
                       <span>{{ username }}</span>
                       <br />
                       <span>{{ companyName }}</span>
@@ -118,11 +118,14 @@
                 </v-container>
               </v-card-title>
               <v-card-actions>
-                <v-btn class="primary">
+                <v-btn
+                  class="primary"
+                  @click="$router.push('/account/updatePassword')"
+                >
                   <v-icon>mdi-cog</v-icon>
                   <span> 修改密碼</span>
                 </v-btn>
-                <v-btn class="warning">登出</v-btn>
+                <v-btn class="warning" @click="handleLogout">登出</v-btn>
               </v-card-actions>
             </v-card>
           </v-list-item>
@@ -170,6 +173,22 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+    <v-dialog v-model="errorDialog" width="800px">
+      <v-card>
+        <v-card-title class="primary white--text">
+          提示
+        </v-card-title>
+        <v-card-text class="mt-4">
+          <h2 class="mt-4">伺服器錯誤，請稍後再試。</h2>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn text color="primary" @click="errorDialog = false" large>
+            <strong>關閉</strong>
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-app>
 </template>
 
@@ -179,6 +198,8 @@ import { authStore } from '~/store'
 
 @Component
 export default class DefaultLayout extends Vue {
+  private errorDialog: boolean = true
+
   private get username() {
     return authStore.user ? authStore.user.username : ''
   }
@@ -768,6 +789,20 @@ export default class DefaultLayout extends Vue {
       ]
     }
   ]
+
+  private async handleLogout(): Promise<any> {
+    try {
+      this.$nuxt.$loading.start()
+      const result = await authStore.signOut({
+        token: this.$cookies.get('accessToken')
+      })
+      this.$router.push('/account')
+    } catch (e) {
+      this.errorDialog = true
+    } finally {
+      this.$nuxt.$loading.finish()
+    }
+  }
 
   private created() {
     this.currentTabName = this.$route.name ? this.$route.name : ''
