@@ -5,9 +5,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch } from 'nuxt-property-decorator'
-import { dialogStore, authStore } from '../store'
-
+import { Component, Vue } from 'nuxt-property-decorator'
 @Component
 export default class LoginLayout extends Vue {}
 </script>

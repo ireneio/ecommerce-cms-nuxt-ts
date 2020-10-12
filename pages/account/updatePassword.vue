@@ -12,18 +12,15 @@
             <validation-observer v-slot="{ invalid }">
               <v-card-text>
                 <v-form>
-                  <validation-provider
-                    v-slot="{ errors }"
-                    rules="required|isEmail"
-                  >
+                  <validation-provider v-slot="{ errors }" rules="required">
                     <v-text-field
-                      label="Email"
+                      label="帳號"
                       name="login"
-                      prepend-icon="mdi-email"
+                      prepend-icon="mdi-account"
                       type="text"
                       :error="errors.length > 0"
                       :hint="errors.length ? errors[0] : ''"
-                      v-model="form.email"
+                      v-model="form.username"
                     ></v-text-field>
                   </validation-provider>
                   <validation-provider v-slot="{ errors }" rules="required">
@@ -131,7 +128,7 @@ export default class AccountUpdatePassword extends Vue {
   }
 
   private form: any = {
-    email: '',
+    username: '',
     oldPassword: '',
     password: '',
     repeatPassword: ''
@@ -143,11 +140,10 @@ export default class AccountUpdatePassword extends Vue {
       method: 'post',
       token: this.$cookies.get('accessToken'),
       data: {
-        acct: this.form.email,
+        acct: this.form.username,
         _newpassword: this.form.password,
         _confirmpassword: this.form.repeatPassword,
-        type: 'mail',
-        token: this.$cookies.get('accessToken')
+        token: this.form.oldPassword
       }
     }
 
