@@ -59,7 +59,7 @@
           提示
         </v-card-title>
         <v-card-text class="mt-4">
-          <h2>{{ dialogMessage || '帳號或密碼錯誤' }}</h2>
+          <h2 class="mt-4">{{ dialogMessage || '帳號或密碼錯誤' }}</h2>
           <div class="mt-4">
             {{
               dialogMessage ? '' : '密碼為 8-12 碼，包含英文大小寫字母與數字'

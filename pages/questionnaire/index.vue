@@ -4,6 +4,14 @@
       <v-col cols="12">
         <h2 class="mb-4">問卷列表</h2>
         <v-card outlined>
+          <v-toolbar flat>
+            <v-btn
+              color="primary"
+              @click="$router.push({ name: 'questionnaire-create' })"
+            >
+              <v-icon>mdi-plus</v-icon> 新增問卷
+            </v-btn>
+          </v-toolbar>
           <v-card-text>
             <v-banner color="rgba(60, 141, 188, 0.05)">
               <v-container>

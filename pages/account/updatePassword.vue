@@ -136,7 +136,7 @@ export default class AccountUpdatePassword extends Vue {
 
   private async handleUpdatePassword(): Promise<any> {
     const requestBody: ProxyRequestObject = {
-      endpoint: '/api/Auth/updatepassword',
+      endpoint: '/api/Auth/UpdatePassword',
       method: 'post',
       token: this.$cookies.get('accessToken'),
       data: {

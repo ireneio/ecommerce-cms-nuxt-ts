@@ -150,136 +150,164 @@
                 <span class="primary--text ml-4">票券已退貨</span>
               </h3>
             </v-card-title>
-            <v-card-subtitle class="mt-2">
-              退貨單號碼: MR2009291003502733 <br />
-              訂單編號: MXS2009260C22J81652 <br />
-              建立日期:2020-09-29 08:35:02 am <br />
-              姓名: Danny <br />
-              Email: danny_hsieh@mayohr.com <br />
-              市話: 0988777666 <br />
-              手機: 0932065694
-            </v-card-subtitle>
             <v-toolbar flat>
               <v-btn color="primary">繼續退貨</v-btn>
               <v-btn color="default" class="ml-4">取消退貨</v-btn>
               <v-btn
                 color="success"
                 class="ml-4"
-                @click="toggleHistory = !toggleHistory"
+                @click="toggleHistoryModal = !toggleHistoryModal"
                 >歷程
               </v-btn>
             </v-toolbar>
-            <v-card-text color="#fff">
-              <div>
-                <span>折讓單號: </span>
-                <span class="primary--text ml-4">N/A</span>
-                <v-radio-group v-model="radios" row>
-                  <template v-slot:label>
-                    <div>折讓單類型</div>
-                  </template>
-                  <v-radio value="aaa" readonly>
-                    <template v-slot:label>
-                      <div>
-                        電子折讓單
-                      </div>
-                    </template>
-                  </v-radio>
-                  <v-radio value="Duckduckgo" class="ml-lg-4" readonly>
-                    <template v-slot:label>
-                      <div>
-                        紙本折讓單
-                      </div>
-                    </template>
-                  </v-radio>
-                  <v-radio value="Duckduckgo1" class="ml-lg-4" readonly>
-                    <template v-slot:label>
-                      <div>
-                        無折讓單
-                      </div>
-                    </template>
-                  </v-radio>
-                </v-radio-group>
-              </div>
+            <v-card-text>
+              <v-container>
+                <v-row>
+                  <v-col cols="6">
+                    <v-data-iterator
+                      :items="refundInfo"
+                      :items-per-page.sync="itemsPerPage"
+                      hide-default-footer
+                    >
+                      <template v-slot:default="props">
+                        <v-row>
+                          <v-col
+                            v-for="item in props.items"
+                            :key="item.name"
+                            cols="12"
+                            lg="12"
+                          >
+                            <v-list dense>
+                              <v-list-item>
+                                <v-list-item-content
+                                  >退貨單號碼</v-list-item-content
+                                >
+                                <v-list-item-content class="align-end">
+                                  {{ item.退貨單號碼 }}
+                                </v-list-item-content>
+                              </v-list-item>
+                              <v-list-item>
+                                <v-list-item-content
+                                  >訂單編號</v-list-item-content
+                                >
+                                <v-list-item-content class="align-end">
+                                  {{ item.訂單編號 }}
+                                </v-list-item-content>
+                              </v-list-item>
+                              <v-list-item>
+                                <v-list-item-content
+                                  >建立日期</v-list-item-content
+                                >
+                                <v-list-item-content class="align-end">
+                                  {{ item.建立日期 }}
+                                </v-list-item-content>
+                              </v-list-item>
+                              <v-list-item>
+                                <v-list-item-content>姓名</v-list-item-content>
+                                <v-list-item-content class="align-end">
+                                  {{ item.姓名 }}
+                                </v-list-item-content>
+                              </v-list-item>
+                              <v-list-item>
+                                <v-list-item-content>Email</v-list-item-content>
+                                <v-list-item-content class="align-end">
+                                  {{ item.Email }}
+                                </v-list-item-content>
+                              </v-list-item>
+                              <v-list-item>
+                                <v-list-item-content>市話</v-list-item-content>
+                                <v-list-item-content class="align-end">
+                                  {{ item.市話 }}
+                                </v-list-item-content>
+                              </v-list-item>
+                              <v-list-item>
+                                <v-list-item-content>手機</v-list-item-content>
+                                <v-list-item-content class="align-end">
+                                  {{ item.手機 }}
+                                </v-list-item-content>
+                              </v-list-item>
+                              <v-list-item>
+                                <v-list-item-content
+                                  >折讓單號</v-list-item-content
+                                >
+                                <v-list-item-content class="align-end">
+                                  {{ item.折讓單號 }}
+                                </v-list-item-content>
+                              </v-list-item>
+                              <v-list-item>
+                                <v-list-item-content
+                                  >折讓單類型</v-list-item-content
+                                >
+                                <v-list-item-content class="align-end">
+                                  {{ item.折讓單類型 }}
+                                </v-list-item-content>
+                              </v-list-item>
+                            </v-list>
+                          </v-col>
+                        </v-row>
+                      </template>
+                    </v-data-iterator>
+                  </v-col>
+                  <v-col cols="6">
+                    <v-simple-table>
+                      <template v-slot:default>
+                        <thead>
+                          <tr>
+                            <th class="text-left">交易兌換序號</th>
+                            <th class="text-left">商品狀態</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr v-for="item in desserts" :key="item.name">
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.calories }}</td>
+                          </tr>
+                        </tbody>
+                      </template>
+                    </v-simple-table>
+                  </v-col>
+                </v-row>
+              </v-container>
             </v-card-text>
-            <v-card-text color="#fff">
-              <v-simple-table>
-                <template v-slot:default>
-                  <thead>
-                    <tr>
-                      <th class="text-left">交易兌換序號</th>
-                      <th class="text-left">商品狀態</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr v-for="item in desserts" :key="item.name">
-                      <td>{{ item.name }}</td>
-                      <td>{{ item.calories }}</td>
-                    </tr>
-                  </tbody>
-                </template>
-              </v-simple-table>
-            </v-card-text>
-            <v-card-text color="#fff">
-              <v-card>
-                <v-card-title>退刷狀態</v-card-title>
-                <v-card-text>
-                  <div>
-                    刷退 :
-                    <span class="primary--text ml-4">0</span>
-                  </div>
-                  <div>
-                    刷退時間 :
-                    <span class="primary--text ml-4">
-                      2020-09-29 08:35:04 am
-                    </span>
-                  </div>
-                </v-card-text>
-              </v-card>
-            </v-card-text>
-            <v-card-text color="#fff">
-              <v-card>
-                <v-card-title>退點狀態</v-card-title>
-                <v-card-text>
-                  <div>
-                    退點 :
-                    <span class="primary--text ml-4">50,000</span>
-                  </div>
-                  <div>
-                    退點時間 :
-                    <span class="primary--text ml-4">
-                      2020-09-29 08:35:04 am
-                    </span>
-                  </div>
-                </v-card-text>
-              </v-card>
-            </v-card-text>
-            <v-card-text color="#fff" v-if="toggleHistory">
-              <v-simple-table>
-                <template v-slot:default>
-                  <thead>
-                    <tr>
-                      <th class="text-left">狀態</th>
-                      <th class="text-left">狀態詳細說明</th>
-                      <th class="text-left">最後更新日期</th>
-                      <th class="text-left">退貨總額</th>
-                      <th class="text-left">刷退</th>
-                      <th class="text-left">退點</th>
-                      <th class="text-left">折讓單號</th>
-                      <th class="text-left">折讓單類型</th>
-                      <th class="text-left">刷退金額</th>
-                      <th class="text-left">退款批次編號</th>
-                      <th class="text-left">退款批次序號</th>
-                      <th class="text-left">申請審核時間</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr v-for="item in desserts" :key="item.name">
-                      <td>{{ item.name }}</td>
-                      <td>{{ item.calories }}</td>
-                    </tr>
-                  </tbody>
-                </template>
-              </v-simple-table>
+            <v-card-text>
+              <v-container>
+                <v-row>
+                  <v-col cols="6">
+                    <v-card>
+                      <v-card-title>退刷狀態</v-card-title>
+                      <v-card-text>
+                        <div>
+                          刷退 :
+                          <span class="primary--text ml-4">0</span>
+                        </div>
+                        <div>
+                          刷退時間 :
+                          <span class="primary--text ml-4">
+                            2020-09-29 08:35:04 am
+                          </span>
+                        </div>
+                      </v-card-text>
+                    </v-card>
+                  </v-col>
+                  <v-col cols="6">
+                    <v-card>
+                      <v-card-title>退點狀態</v-card-title>
+                      <v-card-text>
+                        <div>
+                          退點 :
+                          <span class="primary--text ml-4">50,000</span>
+                        </div>
+                        <div>
+                          退點時間 :
+                          <span class="primary--text ml-4">
+                            2020-09-29 08:35:04 am
+                          </span>
+                        </div>
+                      </v-card-text>
+                    </v-card>
+                  </v-col>
+                </v-row>
+              </v-container>
             </v-card-text>
           </v-card>
         </v-card-text>
@@ -289,6 +317,46 @@
             回列表
           </v-btn>
         </v-card-actions>
+      </v-card>
+    </v-dialog>
+    <v-dialog
+      v-model="toggleHistoryModal"
+      width="1200px"
+      scrollable
+      retain-focus
+    >
+      <v-card>
+        <v-card-title class="primary white--text">
+          歷程
+        </v-card-title>
+        <v-card-text class="mt-4">
+          <v-simple-table>
+            <template v-slot:default>
+              <thead>
+                <tr>
+                  <th class="text-left">狀態</th>
+                  <th class="text-left">狀態詳細說明</th>
+                  <th class="text-left">最後更新日期</th>
+                  <th class="text-left">退貨總額</th>
+                  <th class="text-left">刷退</th>
+                  <th class="text-left">退點</th>
+                  <th class="text-left">折讓單號</th>
+                  <th class="text-left">折讓單類型</th>
+                  <th class="text-left">刷退金額</th>
+                  <th class="text-left">退款批次編號</th>
+                  <th class="text-left">退款批次序號</th>
+                  <th class="text-left">申請審核時間</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="item in desserts" :key="item.name">
+                  <td>{{ item.name }}</td>
+                  <td>{{ item.calories }}</td>
+                </tr>
+              </tbody>
+            </template>
+          </v-simple-table>
+        </v-card-text>
       </v-card>
     </v-dialog>
   </div>
@@ -323,9 +391,25 @@ export default class OrderRefundOrder extends Vue {
     { text: '操作', value: 'fat', align: 'start', sortable: false }
   ]
 
+  private get refundInfo(): Array<any> {
+    return [
+      {
+        退貨單號碼: '【SF 金流】黑長直齊劉海最棒了',
+        訂單編號: '2020-09-01 02:54 pm ~ 2024-09-28 02:54 pm',
+        建立日期: '使用STAYFUN金流',
+        姓名: '你家',
+        Email: '你家',
+        市話: 'aaa',
+        手機: 'bbb',
+        折讓單號: 'ccc',
+        折讓單類型: 'ddddddddddddddddddddd'
+      }
+    ]
+  }
+
   private toggleModal: boolean = true
 
-  private toggleHistory: boolean = false
+  private toggleHistoryModal: boolean = false
 
   private async created() {}
 }

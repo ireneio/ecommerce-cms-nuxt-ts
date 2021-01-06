@@ -72,5 +72,8 @@ export default {
   loading: {
     color: '#fff',
     height: '2px'
+  },
+  vuetify: {
+    optionsPath: './vuetify.options.js'
   }
 }

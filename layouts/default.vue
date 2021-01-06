@@ -66,9 +66,10 @@
     <v-app-bar
       :clipped-left="$vuetify.breakpoint.lgAndUp"
       app
-      color="blue darken-3"
+      color="primary"
       dark
     >
+      <!--Google Blue: color="blue darken-3" -->
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title style="width: 300px" class="ml-0 pl-4">
         <span class="hidden-sm-and-down" @click="$router.push('/')">
@@ -85,7 +86,7 @@
       ></v-text-field> -->
       <v-spacer></v-spacer>
       <v-menu
-        v-model="value"
+        v-model="menuSetting.value"
         :disabled="menuSetting.disabled"
         :absolute="menuSetting.absolute"
         :open-on-hover="menuSetting.openOnHover"
@@ -95,7 +96,7 @@
         :offset-y="menuSetting.offsetY"
       >
         <template v-slot:activator="{ on, attrs }">
-          <v-btn color="teal" class="mr-5" v-bind="attrs" v-on="on" large>
+          <v-btn color="primary" class="mr-5" v-bind="attrs" v-on="on" large>
             <v-icon>mdi-account-circle</v-icon>
             <span class="ml-2">{{ username }}</span>
           </v-btn>
@@ -141,7 +142,40 @@
         </v-row>
       </v-container>
     </v-main>
-    <v-btn bottom color="teal" dark fab fixed right @click="dialog = !dialog">
+    <!-- <v-btn
+      bottom
+      color="primary"
+      dark
+      fab
+      fixed
+      left
+      @click="$vuetify.theme.dark = !$vuetify.theme.dark"
+    >
+      <v-icon>mdi-toggle-switch</v-icon>
+    </v-btn> -->
+    <v-btn
+      bottom
+      :color="!$vuetify.theme.dark ? 'primary' : '#fb8c00'"
+      fab
+      fixed
+      left
+      @click="
+        ;($vuetify.theme.dark = !$vuetify.theme.dark),
+          (theme = !$vuetify.theme.dark)
+      "
+    >
+      <v-icon v-show="$vuetify.theme.dark">mdi-white-balance-sunny</v-icon>
+      <v-icon v-show="!$vuetify.theme.dark">mdi-moon-waning-crescent</v-icon>
+    </v-btn>
+    <v-btn
+      bottom
+      color="primary"
+      dark
+      fab
+      fixed
+      right
+      @click="dialog = !dialog"
+    >
       <v-icon>mdi-xml</v-icon>
     </v-btn>
     <v-dialog v-model="dialog" width="800px">
@@ -193,7 +227,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator'
+import { Component, Vue, Watch } from 'nuxt-property-decorator'
 import { authStore } from '~/store'
 
 @Component
@@ -325,12 +359,12 @@ export default class DefaultLayout extends Vue {
           text: '問卷列表',
           icon: 'mdi-checkbox-blank-circle-outline',
           route: 'questionnaire'
-        },
-        {
-          text: '新增問卷',
-          icon: 'mdi-checkbox-blank-circle-outline',
-          route: 'questionnaire-create'
         }
+        // {
+        //   text: '新增問卷',
+        //   icon: 'mdi-checkbox-blank-circle-outline',
+        //   route: 'questionnaire-create'
+        // }
       ]
     },
     {
@@ -804,8 +838,24 @@ export default class DefaultLayout extends Vue {
     }
   }
 
+  private theme: boolean = true
+
+  @Watch('theme')
+  private onThemeChange(newVal: boolean) {
+    window.localStorage.setItem('theme', newVal ? 'light' : 'dark')
+  }
+
   private created() {
     this.currentTabName = this.$route.name ? this.$route.name : ''
+  }
+
+  private mounted() {
+    const theme = window.localStorage.getItem('theme')
+    // if (theme && theme === 'light') {
+    //   this.$vuetify.theme.dark = false
+    // } else if (theme && theme === 'dark') {
+    //   this.$vuetify.theme.dark = true
+    // }
   }
 }
 </script>

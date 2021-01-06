@@ -131,43 +131,181 @@
               </v-toolbar>
               <v-container>
                 <v-row>
-                  <v-col cols="12">
+                  <v-col cols="6">
                     <v-card>
                       <v-card-title>基本資料</v-card-title>
                       <v-card-text>
-                        <v-simple-table>
-                          <template v-slot:default>
-                            <thead>
-                              <tr>
-                                <th class="text-left">票券簡碼</th>
-                                <th class="text-left">票券名稱</th>
-                                <th class="text-left">票券簡介</th>
-                                <th class="text-left">票券兌換規則(說明)</th>
-                                <th class="text-left">供應商狀態</th>
-                                <th class="text-left">可售數量</th>
-                                <th class="text-left">已售數量</th>
-                                <th class="text-left">鎖單數量</th>
-                                <th class="text-left">成本</th>
-                                <th class="text-left">市價</th>
-                                <th class="text-left">供應商建議售價</th>
-                                <th class="text-left">開始販售日</th>
-                                <th class="text-left">結束販售日</th>
-                                <th class="text-left">有效日期</th>
-                                <th class="text-left">備註</th>
-                                <th class="text-left">例外日期</th>
-                                <th class="text-left">銷售模式</th>
-                                <th class="text-left">適用分店</th>
-                                <th class="text-left">方案模式</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr v-for="item in desserts" :key="item.name">
-                                <td>{{ item.name }}</td>
-                                <td>{{ item.calories }}</td>
-                              </tr>
-                            </tbody>
+                        <v-data-iterator
+                          :items="couponInfo"
+                          :items-per-page.sync="itemsPerPage"
+                          hide-default-footer
+                        >
+                          <template v-slot:default="props">
+                            <v-row>
+                              <v-col
+                                v-for="item in props.items"
+                                :key="item.name"
+                                cols="12"
+                                lg="12"
+                              >
+                                <v-list dense>
+                                  <v-list-item>
+                                    <v-list-item-content
+                                      >票券名稱</v-list-item-content
+                                    >
+                                    <v-list-item-content class="align-end">
+                                      {{ item.票券名稱 }}
+                                    </v-list-item-content>
+                                  </v-list-item>
+                                  <v-list-item>
+                                    <v-list-item-content
+                                      >票券簡介</v-list-item-content
+                                    >
+                                    <v-list-item-content class="align-end">
+                                      {{ item.票券簡介 }}
+                                    </v-list-item-content>
+                                  </v-list-item>
+                                  <v-list-item>
+                                    <v-list-item-content
+                                      >票券兌換規則(說明)</v-list-item-content
+                                    >
+                                    <v-list-item-content class="align-end">
+                                      {{ item['票券兌換規則(說明)'] }}
+                                    </v-list-item-content>
+                                  </v-list-item>
+                                  <v-list-item>
+                                    <v-list-item-content
+                                      >供應商狀態</v-list-item-content
+                                    >
+                                    <v-list-item-content class="align-end">
+                                      {{ item.供應商狀態 }}
+                                    </v-list-item-content>
+                                  </v-list-item>
+                                  <v-list-item>
+                                    <v-list-item-content
+                                      >可售數量</v-list-item-content
+                                    >
+                                    <v-list-item-content class="align-end">
+                                      {{ item.可售數量 }}
+                                    </v-list-item-content>
+                                  </v-list-item>
+                                  <v-list-item>
+                                    <v-list-item-content
+                                      >已售數量</v-list-item-content
+                                    >
+                                    <v-list-item-content class="align-end">
+                                      {{ item.已售數量 }}
+                                    </v-list-item-content>
+                                  </v-list-item>
+                                  <v-list-item>
+                                    <v-list-item-content
+                                      >鎖單數量</v-list-item-content
+                                    >
+                                    <v-list-item-content class="align-end">
+                                      {{ item.鎖單數量 }}
+                                    </v-list-item-content>
+                                  </v-list-item>
+                                  <v-list-item>
+                                    <v-list-item-content
+                                      >成本</v-list-item-content
+                                    >
+                                    <v-list-item-content class="align-end">
+                                      {{ item.成本 }}
+                                    </v-list-item-content>
+                                  </v-list-item>
+                                  <v-list-item>
+                                    <v-list-item-content
+                                      >市價</v-list-item-content
+                                    >
+                                    <v-list-item-content class="align-end">
+                                      {{ item.市價 }}
+                                    </v-list-item-content>
+                                  </v-list-item>
+                                  <v-list-item>
+                                    <v-list-item-content
+                                      >供應商建議售價</v-list-item-content
+                                    >
+                                    <v-list-item-content class="align-end">
+                                      {{ item.供應商建議售價 }}
+                                    </v-list-item-content>
+                                  </v-list-item>
+                                  <v-list-item>
+                                    <v-list-item-content
+                                      >供應商建議售價</v-list-item-content
+                                    >
+                                    <v-list-item-content class="align-end">
+                                      {{ item.供應商建議售價 }}
+                                    </v-list-item-content>
+                                  </v-list-item>
+                                  <v-list-item>
+                                    <v-list-item-content
+                                      >開始販售日</v-list-item-content
+                                    >
+                                    <v-list-item-content class="align-end">
+                                      {{ item.開始販售日 }}
+                                    </v-list-item-content>
+                                  </v-list-item>
+                                  <v-list-item>
+                                    <v-list-item-content
+                                      >結束販售日</v-list-item-content
+                                    >
+                                    <v-list-item-content class="align-end">
+                                      {{ item.結束販售日 }}
+                                    </v-list-item-content>
+                                  </v-list-item>
+                                  <v-list-item>
+                                    <v-list-item-content
+                                      >有效日期</v-list-item-content
+                                    >
+                                    <v-list-item-content class="align-end">
+                                      {{ item.有效日期 }}
+                                    </v-list-item-content>
+                                  </v-list-item>
+                                  <v-list-item>
+                                    <v-list-item-content
+                                      >備註</v-list-item-content
+                                    >
+                                    <v-list-item-content class="align-end">
+                                      {{ item.備註 }}
+                                    </v-list-item-content>
+                                  </v-list-item>
+                                  <v-list-item>
+                                    <v-list-item-content
+                                      >例外日期</v-list-item-content
+                                    >
+                                    <v-list-item-content class="align-end">
+                                      {{ item.例外日期 }}
+                                    </v-list-item-content>
+                                  </v-list-item>
+                                  <v-list-item>
+                                    <v-list-item-content
+                                      >銷售模式</v-list-item-content
+                                    >
+                                    <v-list-item-content class="align-end">
+                                      {{ item.銷售模式 }}
+                                    </v-list-item-content>
+                                  </v-list-item>
+                                  <v-list-item>
+                                    <v-list-item-content
+                                      >適用分店</v-list-item-content
+                                    >
+                                    <v-list-item-content class="align-end">
+                                      {{ item.適用分店 }}
+                                    </v-list-item-content>
+                                  </v-list-item>
+                                  <v-list-item>
+                                    <v-list-item-content
+                                      >方案模式</v-list-item-content
+                                    >
+                                    <v-list-item-content class="align-end">
+                                      {{ item.方案模式 }}
+                                    </v-list-item-content>
+                                  </v-list-item>
+                                </v-list>
+                              </v-col>
+                            </v-row>
                           </template>
-                        </v-simple-table>
+                        </v-data-iterator>
                       </v-card-text>
                     </v-card>
                   </v-col>
@@ -175,29 +313,60 @@
                     <v-card>
                       <v-card-title>票券評價</v-card-title>
                       <v-card-text>
-                        <v-simple-table>
-                          <template v-slot:default>
-                            <thead>
-                              <tr>
-                                <th class="text-left">被瀏覽次數</th>
-                                <th class="text-left">被收藏次數</th>
-                                <th class="text-left">被評價次數</th>
-                                <th class="text-left">平均評價</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr v-for="item in desserts" :key="item.name">
-                                <td>{{ item.name }}</td>
-                                <td>{{ item.calories }}</td>
-                              </tr>
-                            </tbody>
+                        <v-data-iterator
+                          :items="couponInfo"
+                          :items-per-page.sync="itemsPerPage"
+                          hide-default-footer
+                        >
+                          <template v-slot:default="props">
+                            <v-row>
+                              <v-col
+                                v-for="item in props.items"
+                                :key="item.name"
+                                cols="12"
+                                lg="12"
+                              >
+                                <v-list dense>
+                                  <v-list-item>
+                                    <v-list-item-content
+                                      >被瀏覽次數</v-list-item-content
+                                    >
+                                    <v-list-item-content class="align-end">
+                                      {{ item.被瀏覽次數 }}
+                                    </v-list-item-content>
+                                  </v-list-item>
+                                  <v-list-item>
+                                    <v-list-item-content
+                                      >被收藏次數</v-list-item-content
+                                    >
+                                    <v-list-item-content class="align-end">
+                                      {{ item.被收藏次數 }}
+                                    </v-list-item-content>
+                                  </v-list-item>
+                                  <v-list-item>
+                                    <v-list-item-content
+                                      >被評價次數</v-list-item-content
+                                    >
+                                    <v-list-item-content class="align-end">
+                                      {{ item['被評價次數'] }}
+                                    </v-list-item-content>
+                                  </v-list-item>
+                                  <v-list-item>
+                                    <v-list-item-content
+                                      >平均評價</v-list-item-content
+                                    >
+                                    <v-list-item-content class="align-end">
+                                      {{ item.平均評價 }}
+                                    </v-list-item-content>
+                                  </v-list-item>
+                                </v-list>
+                              </v-col>
+                            </v-row>
                           </template>
-                        </v-simple-table>
+                        </v-data-iterator>
                       </v-card-text>
                     </v-card>
-                  </v-col>
-                  <v-col cols="6">
-                    <v-card>
+                    <v-card class="mt-4">
                       <v-card-title>編輯自訂</v-card-title>
                       <v-card-text>
                         <v-container>
@@ -915,6 +1084,35 @@ export default class CouponIndex extends Vue {
       sortable: false
     }
   ]
+
+  private get couponInfo(): Array<any> {
+    return [
+      {
+        票券名稱: '【SF 金流】黑長直齊劉海最棒了',
+        票券簡介: '2020-09-01 02:54 pm ~ 2024-09-28 02:54 pm',
+        '票券兌換規則(說明)': '使用STAYFUN金流',
+        供應商狀態: '你家',
+        可售數量: '你家',
+        已售數量: 'aaa',
+        鎖單數量: 'bbb',
+        成本: 'ccc',
+        市價: 'ddd',
+        供應商建議售價: '不需',
+        開始販售日: '2020-09-01 02:54 pm ~ 2024-09-28 02:54 pm',
+        結束販售日: '你家',
+        有效日期: '你家',
+        備註: '票券多選',
+        例外日期: 'bbb',
+        銷售模式: 'https://aaa.com/pic/1',
+        適用分店: 'aaa',
+        方案模式: 'bbb',
+        被瀏覽次數: '123',
+        被收藏次數: '123',
+        被評價次數: '123',
+        平均評價: '123'
+      }
+    ]
+  }
 
   private handleUploadModal(): void {}
 
